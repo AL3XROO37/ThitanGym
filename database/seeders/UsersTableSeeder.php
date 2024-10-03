@@ -27,6 +27,12 @@ class UsersTableSeeder extends Seeder
                 'password' => Hash::make('password'),
                 'role_id' => $empleadoRoleId, // Asignando el rol de empleado
             ],
+            [
+                'name' => 'Empleado2',
+                'email' => 'empleado2@gimnasio.com',
+                'password' => Hash::make('password'),
+                'role_id' => $empleadoRoleId, // Asignando el rol de empleado
+            ],
         ]);
     }
 }

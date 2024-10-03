@@ -25,4 +25,6 @@ class CreateAgregarPaqueteClienteTable extends Migration
     {
         Schema::dropIfExists('agregar_paquete_cliente');
     }
+
+    
 }

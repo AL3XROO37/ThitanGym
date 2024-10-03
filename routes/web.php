@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PaqueteController;
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\AgregarPaqueteClienteController;
 
 
 /*
@@ -30,3 +34,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index')->middleware('role:admin');
     Route::get('/empleado', [EmpleadoController::class, 'index'])->name('empleado.index')->middleware('role:empleado');
 });
+
+
+Route::resource('users', UserController::class)->middleware('auth', 'role:admin');
+
+Route::resource('paquetes', PaqueteController::class)->middleware('auth', 'role:admin');
+Route::resource('clientes', ClienteController::class)->middleware('auth', 'role:admin');
+Route::resource('agregar_paquete_cliente', AgregarPaqueteClienteController::class);

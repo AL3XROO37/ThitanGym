@@ -19,15 +19,11 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->foreignId('role_id')->constrained('roles')->onDelete('restrict');
-            $table->timestamps();        
+            $table->timestamps();
         });
+        
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('users');
