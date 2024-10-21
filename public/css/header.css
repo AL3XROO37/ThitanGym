@@ -1,0 +1,370 @@
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    list-style: none;
+}
+
+.body1 {
+    min-height: 100vh;
+    background-color: var(--white);
+    color: var(--black);
+    padding-top:100px;
+}
+.header1 {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--white);
+    padding: 16px 5%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    height: 90px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-img {
+    width: 120px;
+    height: auto;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center; /* Centrar los elementos */
+    align-items: center;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en varias líneas si es necesario */
+    outline: none !important;
+}
+
+.navbar a {
+    color: var(--black);
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 10px 15px;
+    margin: 0 15px; /* Ajuste del margen para mantener espacio entre los elementos */
+    transition: color 0.3s ease;
+    white-space: nowrap; /* Evitar que los enlaces se corten si son largos */
+    outline: none !important;
+}
+
+.navbar li {
+    list-style: none;
+    outline: none !important;
+}
+
+.navbar a:hover {
+    color: var(--primary-color);
+}
+
+.navbar a.active {
+    color: var(--primary-color);
+}
+
+
+.main {
+    display: flex;
+    align-items: center;
+}
+
+.main a {
+    margin-right: 25px;
+    margin-left: 10px;
+    color: var(--black);
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+}
+
+.user i {
+    color: var(--primary-color);
+    font-size: 28px;
+    margin-right: 7px;
+}
+
+.main a:hover {
+    color: var(--primary-color);
+}
+
+.cerrar {
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    color: #0f1625;
+}
+
+.cerrar:hover {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+
+#menu-icon {
+    font-size: 35px;
+    color: var(--black);
+    cursor: pointer;
+    z-index: 10001;
+    display: none;
+}
+
+/* Estilos para el elemento desplegable de notificaciones */
+.nav__dropdown {
+    position: relative;
+}
+
+.nav__link {
+    display: flex;
+    align-items: center;
+    color: var(--black);
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 10px 15px;
+    transition: color 0.3s ease;
+}
+
+.nav__link:hover {
+    color: var(--primary-color);
+}
+
+.nav__icon {
+    margin-left: 8px;
+}
+
+/* Estilo para el ícono de la flecha */
+.nav__dropdown-icon {
+    transition: transform 0.3s ease;
+}
+
+.nav__dropdown:hover .nav__dropdown-icon {
+    transform: rotate(180deg);
+}
+
+/* Contenedor para el menú desplegable de notificaciones */
+.nav__dropdown-collapse {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 200px;
+    background-color: var(--white);
+    border: 1px solid var(--gray);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    max-height: 300px; /* Ajusta según tus necesidades */
+    overflow-y: auto; /* Permite el desplazamiento si hay muchas notificaciones */
+}
+
+/* Mostrar el menú desplegable al pasar el ratón sobre el elemento de la lista */
+.nav__dropdown:hover .nav__dropdown-collapse {
+    display: block;
+}
+
+/* Estilos para el contenido del menú desplegable */
+.nav__dropdown-content {
+    padding: 10px;
+}
+
+.nav__dropdown-item {
+    display: block;
+    color: var(--black);
+    font-size: 0.9rem;
+    padding: 8px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.nav__dropdown-item:hover {
+    background-color: var(--gray);
+}
+
+/* Estilos para el mensaje y la fecha */
+.mensaje {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.fecha {
+    font-size: 0.8rem;
+    color: var(--gray);
+}
+/* Estilos para el elemento desplegable de notificaciones */
+.nav__dropdown {
+    position: relative;
+}
+
+.nav__link {
+    display: flex;
+    align-items: center;
+    color: var(--black);
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 10px 15px;
+    transition: color 0.3s ease;
+}
+
+.nav__link:hover {
+    color: var(--primary-color);
+}
+
+.nav__icon {
+    margin-left: 8px;
+}
+
+/* Estilo para el ícono de la flecha */
+.nav__dropdown-icon {
+    transition: transform 0.3s ease;
+}
+
+.nav__dropdown:hover .nav__dropdown-icon {
+    transform: rotate(180deg);
+}
+
+/* Contenedor para el menú desplegable de notificaciones */
+.nav__dropdown-collapse {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 200px;
+    background-color: var(--white);
+    border: 1px solid var(--gray);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    max-height: 300px; /* Ajusta según tus necesidades */
+    overflow-y: auto; /* Permite el desplazamiento si hay muchas notificaciones */
+}
+
+/* Mostrar el menú desplegable al pasar el ratón sobre el elemento de la lista */
+.nav__dropdown:hover .nav__dropdown-collapse {
+    display: block;
+}
+
+/* Estilos para el contenido del menú desplegable */
+.nav__dropdown-content {
+    padding: 10px;
+}
+
+.nav__dropdown-item {
+    display: block;
+    color: var(--black);
+    font-size: 0.9rem;
+    padding: 8px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.nav__dropdown-item:hover {
+    background-color: var(--gray);
+}
+
+/* Estilos para el mensaje y la fecha */
+.mensaje {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.fecha {
+    font-size: 0.8rem;
+    color: var(--gray);
+}
+
+@media (max-width: 1299px) {
+    header {
+        padding: 14px 5%;
+        transition: 0.2s;
+    }
+
+    .navbar a {
+        padding: 5px 0;
+        margin: 0 20px;
+    }
+}
+
+/* Ajuste para pantallas pequeñas (móviles) */
+@media (max-width: 1090px) {
+    #menu-icon {
+        display: block; /* Mostrar el ícono de menú en pantallas pequeñas */
+    }
+
+    .navbar {
+        position: absolute;
+        top: 100%;
+        right: -100%;
+        width: 270px;
+        background: var(--primary-color);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* Alinear enlaces a la izquierda */
+        border-radius: 10px;
+        transition: right 0.5s ease;
+        padding: 10px;
+    }
+
+    .navbar.open {
+        right: 2%; /* Cuando el menú esté abierto, aparecerá desde la derecha */
+    }
+
+    .navbar a {
+        display: block;
+        margin: 12px 0;
+        padding: 10px 25px;
+        font-size: 14px;
+        color: var(--white); /* Cambiar el color de los enlaces cuando estén en el menú desplegable */
+        transition: all 0.5s ease;
+    }
+
+    .navbar a:hover {
+        color: var(--black);
+        transform: translateY(5px);
+    }
+
+    .navbar a.active {
+        color: var(--black);
+    }
+}
+
+
+/* Ajustes para pantallas muy pequeñas (móviles pequeños) */
+@media (max-width: 420px) {
+    .main a {
+        font-size: 12px; /* Reducir aún más el tamaño de fuente */
+    }
+
+    .navbar {
+        width: 230px; /* Ajustar el ancho del menú en móviles pequeños */
+    }
+
+    .navbar a {
+        font-size: 12px; /* Reducir tamaño de fuente para ahorrar espacio */
+    }
+
+    .logo-img {
+        width: 70px; /* Hacer el logo más pequeño para pantallas pequeñas */
+        height: auto;
+    }
+
+    .nav__icon {
+        font-size: 24px; /* Ajustar tamaño del ícono en pantallas pequeñas */
+    }
+}

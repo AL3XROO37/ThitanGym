@@ -25,22 +25,23 @@
         <tbody>
             @foreach ($clientes as $cliente)
                 <tr>
-                    <td>{{ $cliente->id }}</td>
-                    <td>{{ $cliente->name }}</td>
-                    <td>{{ $cliente->apellido }}</td>
-                    <td>{{ $cliente->telefono }}</td>
-                    <td>{{ $cliente->direccion }}</td>
-                    <td>{{ $cliente->foto }}</td>
-                    <td>
-                        <a href="{{ route('clientes.edit', $cliente->id) }}" class="btn btn-warning">Editar</a>
+                    <td data-label="ID">{{ $cliente->id }}</td>
+                    <td data-label="Nombre">{{ $cliente->name }}</td>
+                    <td data-label="Apellido">{{ $cliente->apellido }}</td>
+                    <td data-label="Teléfono">{{ $cliente->telefono }}</td>
+                    <td data-label="Dirección">{{ $cliente->direccion }}</td>
+                    <td data-label="Foto"><img src="{{ asset('storage/' . $cliente->foto) }}" alt="Foto"></td>
+                    <td data-label="Acciones">
+                        <a href="{{ route('clientes.edit', $cliente->id) }}" class="btn btn-warning"><i class='bx bx-edit-alt' ></i></a>
                         <form action="{{ route('clientes.destroy', $cliente->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                            <button type="submit" class="btn btn-danger"><i class='bx bx-trash'></i></button>
                         </form>
                     </td>
                 </tr>
             @endforeach
         </tbody>
+        
     </table>
 @endsection

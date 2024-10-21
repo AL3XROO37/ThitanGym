@@ -1,54 +1,77 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <h1>Agregar Paquete a Cliente</h1>
+<div class="container">
+    <h1>Asignar Paquete a Cliente</h1>
 
-        <form action="{{ route('agregar_paquete_cliente.store') }}" method="POST">
-            @csrf
-            <div class="form-group">
-                <label for="cliente_id">Cliente</label>
-                <select name="cliente_id" id="cliente_id" class="form-control" required>
-                    <option value="">Seleccionar Cliente</option>
-                    @foreach($clientes as $cliente)
-                        <option value="{{ $cliente->id }}">{{ $cliente->name }}</option>
-                    @endforeach
-                </select>
-            </div>
+    {{-- Mostrar mensajes de validación --}}
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
-            <div class="form-group">
-                <label for="paquete_id">Paquete</label>
-                <select name="paquete_id" id="paquete_id" class="form-control" required>
-                    <option value="">Seleccionar Paquete</option>
-                    @foreach($paquetes as $paquete)
-                        <option value="{{ $paquete->id }}">{{ $paquete->nombre }}</option>
-                    @endforeach
-                </select>
-            </div>
+    {{-- Formulario para crear la asignación --}}
+    <form action="{{ route('agregar_paquete_cliente.store') }}" method="POST">
+        @csrf
+        <div class="form-group">
+            <label for="searchCliente">Buscar Cliente:</label>
+            <input type="text" id="searchCliente" class="form-control" placeholder="Buscar cliente...">
 
-            <div class="form-group">
-                <label for="precio_total">Precio Total</label>
-                <input type="number" name="precio_total" id="precio_total" class="form-control" required>
-            </div>
+            <label for="cliente_id" style="margin-top: 15px;">Cliente:</label>
+            <select name="cliente_id" id="clienteSelect" class="form-control" required>
+                <option value="" disabled selected>Seleccione un cliente</option> <!-- Opción vacía -->
+                @foreach($clientes as $cliente)
+                    <option value="{{ $cliente->id }}">{{ $cliente->name }}</option>
+                @endforeach
+            </select>
+        </div>
 
-            <div class="form-group">
-                <label for="clave_acceso">Clave de Acceso</label>
-                <input type="text" name="clave_acceso" id="clave_acceso" class="form-control" required>
-            </div>
+        <div class="form-group">
+            <label for="paquete_id">Paquete:</label>
+            <select name="paquete_id" class="form-control" required>
+                @foreach($paquetes as $paquete)
+                    <option value="{{ $paquete->id }}">{{ $paquete->nombre }}</option>
+                @endforeach
+            </select>
+        </div>
 
-            <div class="form-group">
-                <label for="fecha_inicio">Fecha de Inicio</label>
-                <input type="date" name="fecha_inicio" id="fecha_inicio" class="form-control" required>
-            </div>
+        <div class="form-group">
+            <label for="fecha_inicio">Fecha de Inicio:</label>
+            <input type="date" name="fecha_inicio" class="form-control" required>
+        </div>
 
-            <div class="form-group">
-                <label for="estado">Estado</label>
-                <select name="estado" id="estado" class="form-control" required>
-                    <option value="activo">Activo</option>
-                    <option value="inactivo">Inactivo</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-success">Agregar Paquete</button>
-        </form>
-    </div> 
-@endsection 
+        <div class="form-group">
+            <label for="precio_total">Precio Total:</label>
+            <input type="text" name="precio_total" class="form-control" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Agregar Paquete</button>
+    </form>
+</div>
+@endsection
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('searchCliente');
+        const clienteSelect = document.getElementById('clienteSelect');
+
+        searchInput.addEventListener('input', function() {
+            const filter = searchInput.value.toLowerCase();
+            const options = clienteSelect.options;
+
+            for (let i = 0; i < options.length; i++) {
+                const optionText = options[i].text.toLowerCase();
+                if (optionText.includes(filter)) {
+                    options[i].style.display = '';
+                } else {
+                    options[i].style.display = 'none';
+                }
+            }
+        });
+    });
+</script>

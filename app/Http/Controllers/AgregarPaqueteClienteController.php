@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
+
 use App\Models\AgregarPaqueteCliente;
 use App\Models\Cliente;
 use App\Models\Paquete;
@@ -11,81 +13,85 @@ class AgregarPaqueteClienteController extends Controller
 {
     public function index()
     {
+        // Obtener todos los registros de la tabla agregar_paquete_cliente, incluyendo relaciones
         $paquetesClientes = AgregarPaqueteCliente::with(['cliente', 'paquete'])->get();
         return view('agregar_paquete_cliente.index', compact('paquetesClientes'));
     }
 
+
     public function create()
     {
+        // Obtener clientes y paquetes para el formulario
         $clientes = Cliente::all();
         $paquetes = Paquete::all();
         return view('agregar_paquete_cliente.create', compact('clientes', 'paquetes'));
     }
 
+
     public function store(Request $request)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'cliente_id' => 'required|exists:clientes,id',
             'paquete_id' => 'required|exists:paquetes,id',
-            'precio_total' => 'required|numeric',
-            'clave_acceso' => 'required|unique:agregar_paquete_cliente,clave_acceso',
             'fecha_inicio' => 'required|date',
-            'estado' => 'required|in:activo,inactivo',
+            'precio_total' => 'required|numeric',
         ]);
 
-        $paquete = Paquete::find($request->paquete_id);
-        $fechaFin = now()->addDays($paquete->duracion_dias);
+        $validatedData['clave_acceso'] = $this->generateUniqueKey();
 
-        AgregarPaqueteCliente::create([
-            'cliente_id' => $request->cliente_id,
-            'paquete_id' => $request->paquete_id,
-            'precio_total' => $request->precio_total,
-            'clave_acceso' => $request->clave_acceso,
-            'fecha_inicio' => $request->fecha_inicio,
-            'fecha_fin' => $fechaFin,
-            'estado' => $request->estado,
-        ]);
+        // Crear el registro
+        AgregarPaqueteCliente::create($validatedData);
 
-        return redirect()->route('agregar_paquete_cliente.index')->with('success', 'Paquete agregado correctamente.');
+        return redirect()->route('agregar_paquete_cliente.index')->with('success', 'Paquete asignado exitosamente');
     }
 
-    public function edit(AgregarPaqueteCliente $agregarPaqueteCliente)
+    // Método para generar una clave única
+    private function generateUniqueKey($length = 10)
     {
-        $clientes = Cliente::all();
-        $paquetes = Paquete::all();
+        do {
+            $key = mt_rand(1000000000, 9999999999); // Genera un número aleatorio de 10 dígitos
+        } while (AgregarPaqueteCliente::where('clave_acceso', $key)->exists()); // Asegura que la clave sea única
+
+        return $key;
+    }
+
+
+    public function edit($id)
+    {
+        $agregarPaqueteCliente = AgregarPaqueteCliente::findOrFail($id);
+        $clientes = Cliente::all(); // Obtén todos los clientes
+        $paquetes = Paquete::all(); // Obtén todos los paquetes
+
         return view('agregar_paquete_cliente.edit', compact('agregarPaqueteCliente', 'clientes', 'paquetes'));
     }
 
-    public function update(Request $request, AgregarPaqueteCliente $agregarPaqueteCliente)
+    // Método para actualizar el registro
+    public function update(Request $request, $id)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'cliente_id' => 'required|exists:clientes,id',
             'paquete_id' => 'required|exists:paquetes,id',
             'precio_total' => 'required|numeric',
-            'clave_acceso' => 'required|unique:agregar_paquete_cliente,clave_acceso,' . $agregarPaqueteCliente->id,
+            'clave_acceso' => 'required|unique:agregar_paquete_cliente,clave_acceso,' . $id,
             'fecha_inicio' => 'required|date',
-            'estado' => 'required|in:activo,inactivo',
         ]);
 
-        $paquete = Paquete::find($request->paquete_id);
-        $fechaFin = now()->addDays($paquete->duracion_dias);
+        $agregarPaqueteCliente = AgregarPaqueteCliente::findOrFail($id);
+        $agregarPaqueteCliente->fill($validatedData);
 
-        $agregarPaqueteCliente->update([
-            'cliente_id' => $request->cliente_id,
-            'paquete_id' => $request->paquete_id,
-            'precio_total' => $request->precio_total,
-            'clave_acceso' => $request->clave_acceso,
-            'fecha_inicio' => $request->fecha_inicio,
-            'fecha_fin' => $fechaFin,
-            'estado' => $request->estado,
-        ]);
+        // Este paso llamará a la lógica del modelo para calcular la fecha_fin
+        $agregarPaqueteCliente->save();
 
-        return redirect()->route('agregar_paquete_cliente.index')->with('success', 'Paquete actualizado correctamente.');
+        return redirect()->route('agregar_paquete_cliente.index')->with('success', 'Paquete actualizado exitosamente');
     }
 
-    public function destroy(AgregarPaqueteCliente $agregarPaqueteCliente)
+
+    public function destroy($id)
     {
-        $agregarPaqueteCliente->delete();
-        return redirect()->route('agregar_paquete_cliente.index')->with('success', 'Paquete eliminado correctamente.');
+        // Eliminar la asignación
+        $paqueteCliente = AgregarPaqueteCliente::findOrFail($id);
+        $paqueteCliente->delete();
+
+        return redirect()->route('agregar_paquete_cliente.index')->with('success', 'Asignación de paquete eliminada correctamente.');
     }
 }

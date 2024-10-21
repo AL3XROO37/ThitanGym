@@ -9,6 +9,10 @@ use App\Http\Controllers\PaqueteController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\AgregarPaqueteClienteController;
 
+use App\Http\Controllers\PagoController;
+use App\Http\Controllers\AccesoController;
+use App\Http\Controllers\VisitaController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +41,14 @@ Route::middleware(['auth'])->group(function () {
 
 
 Route::resource('users', UserController::class)->middleware('auth', 'role:admin');
-
 Route::resource('paquetes', PaqueteController::class)->middleware('auth', 'role:admin');
 Route::resource('clientes', ClienteController::class)->middleware('auth', 'role:admin');
-Route::resource('agregar_paquete_cliente', AgregarPaqueteClienteController::class);
+Route::resource('agregar_paquete_cliente', AgregarPaqueteClienteController::class)->middleware('auth', 'role:admin');
+Route::resource('pagos', PagoController::class)->middleware('auth', 'role:admin');
+
+Route::resource('accesos', AccesoController::class)->middleware('auth', 'role:admin');
+Route::get('accesos/fetch-cliente/{cliente}', [AccesoController::class, 'fetchClienteData']);
+Route::post('/accesos/buscar-cliente', [AccesoController::class, 'buscarClientePorClaveAcceso'])->name('accesos.buscar-cliente');
+Route::post('/accesos', [AccesoController::class, 'store'])->name('accesos.store');
+Route::post('/accesos', [AccesoController::class, 'store'])->name('accesos.store');
+Route::resource('visitas', VisitaController::class)->middleware('auth', 'role:admin');

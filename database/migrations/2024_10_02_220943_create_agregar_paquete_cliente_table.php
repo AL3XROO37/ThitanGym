@@ -10,9 +10,9 @@ class CreateAgregarPaqueteClienteTable extends Migration
     {
         Schema::create('agregar_paquete_cliente', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('cliente_id')->constrained()->onDelete('cascade');
-            $table->foreignId('paquete_id')->constrained()->onDelete('cascade');
-            $table->decimal('precio_total', 10, 2)->check('precio_total >= 0');
+            $table->foreignId('cliente_id')->constrained('clientes');
+            $table->foreignId('paquete_id')->constrained('paquetes');
+            $table->decimal('precio_total', 10, 2);
             $table->string('clave_acceso')->unique();
             $table->date('fecha_inicio');
             $table->date('fecha_fin');

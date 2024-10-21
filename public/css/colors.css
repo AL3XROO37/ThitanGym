@@ -1,0 +1,12 @@
+/* resources/css/colors.css */
+:root {
+    --primary-color: #8069f1;
+    --secondary-color: #e81968;
+    --background-input: #e4e4e4;
+    --text-color: #9fa3a5;
+    --white: #fff;
+    --black: black;
+    --gray:#f6f6f6;
+    --footer:#f2f2f2;
+    --verde: #43bb2b;
+}

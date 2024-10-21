@@ -1,0 +1,215 @@
+.screen{
+    display: flex;
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.izq2{
+    height: 100%;
+    width: 50%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: unset;
+    background-size: cover;    
+}
+.izq2 img{
+    height: 100%;
+    width: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: unset;
+    background-size: cover; 
+}
+.derecha{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/*Formulario------------------------------------------*/
+.box-form{
+    margin-top: -40px;
+}
+.form-registro{
+    width: 400px;
+    height: 570px;
+    padding: 30px;
+    border-radius: 5px;
+    font-family: 'calibri';
+}
+.box-form h5{
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: lighter;
+}
+.form-registro h4{
+    font-size: 25px;
+    margin-bottom: 60px ;
+    text-align: center ;
+    margin-top: 20px;
+    color: var(--primary-color);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: lighter;
+}
+#controls{
+  width: 100%;
+  background: var(--background-input);
+  padding: 13px;
+  border-radius: 25px;
+  margin-bottom: 14px;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+}
+.form-registro p{
+    height: 20px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 40px;
+    margin-top: 10px;
+}
+.form-registro a{
+    color: var(--text-color);
+    text-decoration:none  ;
+}
+.form-registro a:hover{
+    color: var(--secondary-color);
+    text-decoration: underline ;
+}
+.form-registro .boton{
+    margin-top: 10px;
+    padding: 13px;
+    border: none;
+    background: var(--primary-color);
+    color: white;
+    font-weight: 500;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background, color, 300ms;
+    width: 100%;
+    border-radius: 17px;
+
+}
+.form-registro .boton:hover{
+    background: black;
+    color: var(--secondary-color);
+
+}
+#seccion-form{
+    margin-top:-60px;
+}
+#seccion-form h5{
+    color: var(--text-color);
+    padding: 7px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: lighter;
+}
+#seccion-form2{
+    margin-top:10px;
+}
+#seccion-form2 h5{
+    color: var(--text-color);
+    margin-left: 20px;
+    padding: 7px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: lighter;
+}
+/* TEXTO DE ERROR */
+.msg-error {
+    color: red;
+    display: block;
+    margin-top: 10px;
+}
+/* Pantallas grandes (escritorio) */
+@media screen and (min-width: 1024px) {
+    .screen {
+        display: flex;
+        position: fixed;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .izq2 {
+        width: 50%;
+    }
+
+    .derecha {
+        width: 50%;
+    }
+
+    .form-registro {
+        width: 400px;
+        height: 570px;
+    }
+}
+
+/* Para pantallas medianas (tablets) */
+@media screen and (max-width: 1024px) {
+    .screen {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+    .izq2 {
+        width: 100%;
+        height: 300px;
+    }
+
+    .izq2 img {
+        height: 100%;
+        width: 100%;
+    }
+
+    .derecha {
+        width: 100%;
+        height: auto;
+        justify-content: center;
+    }
+
+    .form-registro {
+        width: 80%;
+        height: auto;
+    }
+}
+
+/* Para pantallas pequeñas (móviles) */
+@media screen and (max-width: 768px) {
+    /* Ocultar imagen en dispositivos pequeños */
+    .izq2 {
+        display: none;
+    }
+
+    .derecha {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .form-registro {
+        width: 90%;
+        height: auto;
+        padding: 20px;
+    }
+
+    #controls {
+        font-size: 14px;
+    }
+
+    .form-registro h4 {
+        font-size: 20px;
+        
+    }
+
+    .form-registro .boton {
+        font-size: 16px;
+    }
+}
+
+

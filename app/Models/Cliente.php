@@ -31,5 +31,8 @@ class Cliente extends Model
         return $this->hasMany(AgregarPaqueteCliente::class, 'cliente_id');
     }
 
-    
+    public function paquete()
+    {
+        return $this->belongsTo(Paquete::class);
+    }
 }

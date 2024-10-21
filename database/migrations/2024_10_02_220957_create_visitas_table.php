@@ -10,13 +10,14 @@ class CreateVisitasTable extends Migration
     {
         Schema::create('visitas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('cliente_id')->constrained()->onDelete('cascade');
+            $table->foreignId('cliente_id')->constrained('clientes');
             $table->date('fecha_visita');
             $table->time('hora_entrada');
-            $table->time('hora_salida')->nullable();
+            $table->decimal('monto_pagado', 8, 2); // Campo para el pago
             $table->timestamps();
         });
     }
+    
 
     public function down()
     {

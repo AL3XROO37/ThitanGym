@@ -20,8 +20,7 @@ return new class extends Migration
             $table->string('password');
             $table->foreignId('role_id')->constrained('roles')->onDelete('restrict');
             $table->timestamps();
-        });
-        
+        });    
     }
 
     public function down()

@@ -10,14 +10,16 @@ class CreateAccesosTable extends Migration
     {
         Schema::create('accesos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('cliente_id')->constrained()->onDelete('cascade');
-            $table->string('clave_acceso');
+            $table->foreignId('cliente_id')->constrained('clientes'); // Clave foránea a clientes
+            $table->string('clave_acceso')->constrained('agregar_paquete_cliente')->onDelete('cascade'); // Clave foránea a agregar_paquete_cliente
             $table->date('fecha_acceso');
             $table->time('hora_acceso');
             $table->timestamps();
         });
     }
 
+
+    
     public function down()
     {
         Schema::dropIfExists('accesos');

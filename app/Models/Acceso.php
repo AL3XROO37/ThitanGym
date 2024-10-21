@@ -18,10 +18,15 @@ class Acceso extends Model
 
     public function cliente()
     {
-        return $this->belongsTo(Cliente::class, 'cliente_id');
+        return $this->belongsTo(Cliente::class);
     }
 
     public function agregarPaqueteCliente()
+    {
+        return $this->belongsTo(AgregarPaqueteCliente::class, 'clave_acceso', 'clave_acceso');
+    }
+    
+    public function paquete()
     {
         return $this->belongsTo(AgregarPaqueteCliente::class, 'clave_acceso', 'clave_acceso');
     }

@@ -1,0 +1,173 @@
+/* General */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
+    padding: 20px;
+}
+
+/* Título de la página */
+h1 {
+    font-size: 2rem;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+/* Botón principal */
+a.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+a.btn-primary:hover {
+    background-color:  var(--primary-color);
+}
+
+/* Tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+table thead {
+    background-color:  var(--primary-color);
+    color: white;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+table td img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+table tr:hover {
+    background-color: #f2f2f2;
+}
+
+/* Botones de acción */
+a.btn-warning, button.btn-danger {
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+a.btn-warning {
+    background-color: var(--verde);
+}
+
+a.btn-warning:hover {
+    background-color: var(--verde);
+}
+
+button.btn-danger {
+    background-color: #f1341f;
+    border: none;
+    cursor: pointer;
+}
+
+button.btn-danger:hover {
+    background-color: #f1341f;
+}
+
+/* Estilos para alertas */
+.alert-success {
+    background-color: #2ecc71;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.alert-success:hover {
+    background-color: #27ae60;
+}
+
+
+/* Responsivo */
+@media (max-width: 768px) {
+    /* Cambiar la tabla para que parezca más una lista en pantallas pequeñas */
+    table, thead, tbody, th, td, tr {
+        display: block;
+        width: 100%;
+    }
+
+    /* Ocultar el encabezado de la tabla en pantallas pequeñas */
+    thead {
+        display: none;
+    }
+
+    /* Estilos para cada fila de datos como un bloque en dispositivos móviles */
+    tr {
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+        background-color: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Estilos para cada celda de datos */
+    td {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        font-size: 0.9rem;
+    }
+
+    /* Etiquetas para los datos */
+    td::before {
+        content: attr(data-label); /* Mostrar el nombre de la columna en cada celda */
+        font-weight: bold;
+        color: #333;
+        flex: 1;
+    }
+
+    td img {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    /* Ajuste de los botones de acción */
+    .btn-warning, .btn-danger {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    /* Alinear los botones de acción en una sola fila */
+    td:last-child {
+        display: flex;
+        justify-content: space-between;
+    }
+}

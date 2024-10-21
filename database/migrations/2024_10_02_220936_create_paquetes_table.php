@@ -11,8 +11,8 @@ class CreatePaquetesTable extends Migration
         Schema::create('paquetes', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->decimal('precio', 10, 2)->check('precio >= 0');
-            $table->integer('duracion_dias')->check('duracion_dias > 0');
+            $table->decimal('precio', 10, 2);
+            $table->integer('duracion_dias');
             $table->text('descripcion')->nullable();
             $table->timestamps();
         });

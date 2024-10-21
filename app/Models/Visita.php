@@ -14,10 +14,12 @@ class Visita extends Model
         'fecha_visita',
         'hora_entrada',
         'hora_salida',
+        'monto_pagado', // Si decides incluir el monto aquí
     ];
 
+    // Definición de la relación con el modelo Cliente
     public function cliente()
     {
-        return $this->belongsTo(Cliente::class, 'cliente_id');
+        return $this->belongsTo(Cliente::class);
     }
 }

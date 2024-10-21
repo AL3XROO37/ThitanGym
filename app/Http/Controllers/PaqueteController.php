@@ -22,9 +22,9 @@ class PaqueteController extends Controller
     {
         $request->validate([
             'nombre' => 'required',
-            'precio' => 'required|numeric|min:0',
-            'duracion_dias' => 'required|integer|min:1',
-            'descripcion' => 'nullable',
+            'precio' => 'required|numeric',
+            'duracion_dias' => 'required|integer',
+            'descripcion' => 'nullable|string',
         ]);
 
         Paquete::create($request->all());
