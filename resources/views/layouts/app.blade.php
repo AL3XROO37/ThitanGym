@@ -40,7 +40,7 @@
             @auth
                 <ul class="navbar">
                     <li><a href="{{ route('admin.index') }}"
-                            class="{{ Request::is('admin') ? 'active' : '' }}">Inicio</a></li>
+                            class="{{ Request::is('admin/index') ? 'active' : '' }}">Inicio</a></li>
                     <li><a href="{{ route('clientes.index') }}"
                             class="{{ Request::is('clientes') ? 'active' : '' }}">Clientes</a></li>
                     <li><a href="{{ route('paquetes.index') }}"

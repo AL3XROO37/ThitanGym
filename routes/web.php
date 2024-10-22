@@ -55,4 +55,4 @@ Route::post('/accesos', [AccesoController::class, 'store'])->name('accesos.store
 Route::resource('visitas', VisitaController::class)->middleware('auth', 'role:admin');
 // Archivo: routes/web.php
 
-Route::get('/admin/index', [AdminController::class, 'dashboard'])->name('admin.index');
+Route::get('/admin/index', [AdminController::class, 'index'])->name('admin.index')->middleware('role:admin');
