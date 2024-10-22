@@ -13,11 +13,21 @@ class AgregarPaqueteClienteController extends Controller
 {
     public function index()
     {
+        // Obtener la fecha actual
+        $now = now();
+
+        // Actualizar el estado a 'inactivo' si la fecha_fin ha expirado o es igual a la fecha actual
+        AgregarPaqueteCliente::where('fecha_fin', '<=', $now)
+            ->update(['estado' => 'inactivo']);
+
+        // Actualizar el estado a 'activo' si la fecha_fin es mayor que la fecha actual
+        AgregarPaqueteCliente::where('fecha_fin', '>=', $now)
+            ->update(['estado' => 'activo']);
+
         // Obtener todos los registros de la tabla agregar_paquete_cliente, incluyendo relaciones
         $paquetesClientes = AgregarPaqueteCliente::with(['cliente', 'paquete'])->get();
         return view('agregar_paquete_cliente.index', compact('paquetesClientes'));
     }
-
 
     public function create()
     {
@@ -94,4 +104,6 @@ class AgregarPaqueteClienteController extends Controller
 
         return redirect()->route('agregar_paquete_cliente.index')->with('success', 'Asignación de paquete eliminada correctamente.');
     }
+
+    
 }

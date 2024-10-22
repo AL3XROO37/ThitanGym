@@ -1,0 +1,148 @@
+/* Contenedor principal */
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    padding: 1.5%;
+}
+
+/* Alinear las dos secciones lado a lado */
+.row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Permite que las columnas se apilen si no hay suficiente espacio */
+}
+
+/* Secciones laterales */
+.col-left, .col-right {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Espacio entre las columnas en pantallas pequeñas */
+}
+
+.col-left {
+    width: 66%;
+}
+
+.col-right {
+    width: 30%;
+}
+
+/* Estilo para los títulos */
+h2, h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+
+
+/* Estilos para las últimas ventas */
+.list-group {
+    list-style: none;
+    padding: 0;
+}
+
+/* Ajustes en la lista de ventas para reducir el espaciado entre elementos */
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+/* Avatar circular con inicial */
+.avatar-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* Estilo para las iniciales */
+.initials {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Precio de la venta */
+.badge-primary {
+    background-color: #28a745;
+    padding: 10px 15px;
+    color: white;
+    font-size: 14px;
+    border-radius: 20px;
+}
+
+/* Media queries para pantallas pequeñas */
+@media (max-width: 768px) {
+    /* Cambia la disposición de las columnas a vertical en pantallas pequeñas */
+    .col-left, .col-right {
+        width: 100%;
+    }
+
+    /* Ajusta el padding para que sea más pequeño en pantallas móviles */
+    .container {
+        padding: 1%;
+    }
+
+    /* Ajusta el tamaño del avatar en pantallas pequeñas */
+    .avatar-circle {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+
+    /* Ajusta el tamaño de los textos para pantallas pequeñas */
+    .list-group-item {
+        padding: 8px 10px;
+    }
+
+    .badge-primary, .badge-warning {
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+}
+
+/* Media queries para pantallas medianas */
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* Ajusta el ancho de las columnas en pantallas medianas */
+    .col-left {
+        width: 63%;
+    }
+
+    .col-right {
+        width: 34%;
+    }
+
+    /* Ajusta el tamaño del avatar en pantallas medianas */
+    .avatar-circle {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+
+    /* Ajusta el tamaño de los textos para pantallas medianas */
+    .list-group-item {
+        padding: 9px 12px;
+    }
+
+    .badge-primary, .badge-warning {
+        font-size: 13px;
+        padding: 9px 12px;
+    }
+}

@@ -23,11 +23,11 @@
         <tbody>
             @foreach($paquetes as $paquete)
                 <tr>
-                    <td>{{ $paquete->nombre }}</td>
-                    <td>{{ $paquete->precio }}</td>
-                    <td>{{ $paquete->duracion_dias }}</td>
-                    <td>{{ $paquete->descripcion }}</td>
-                    <td>
+                    <td data-label="Nombre">{{ $paquete->nombre }}</td>
+                    <td data-label="Precio">{{ $paquete->precio }}</td>
+                    <td data-label="Duracion-Dias">{{ $paquete->duracion_dias }}</td>
+                    <td data-label="Descripcion">{{ $paquete->descripcion }}</td>
+                    <td data-label="Acciones">
                         <a href="{{ route('paquetes.edit', $paquete->id) }}" class="btn btn-warning">Editar</a>
                         <form action="{{ route('paquetes.destroy', $paquete->id) }}" method="POST" style="display:inline;">
                             @csrf

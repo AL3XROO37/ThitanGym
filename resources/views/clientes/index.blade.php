@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+
+<div class="contenedor-crud">
+
+
     <h1>Lista de Clientes</h1>
     <a href="{{ route('clientes.create') }}" class="btn btn-primary mb-3">Agregar Cliente</a>
 
@@ -24,7 +28,7 @@
         </thead>
         <tbody>
             @foreach ($clientes as $cliente)
-                <tr>
+                <tr class="tr-hover">
                     <td data-label="ID">{{ $cliente->id }}</td>
                     <td data-label="Nombre">{{ $cliente->name }}</td>
                     <td data-label="Apellido">{{ $cliente->apellido }}</td>
@@ -41,7 +45,8 @@
                     </td>
                 </tr>
             @endforeach
-        </tbody>
-        
+        </tbody>    
     </table>
+
+</div>
 @endsection

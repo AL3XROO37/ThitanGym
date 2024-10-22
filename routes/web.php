@@ -12,6 +12,7 @@ use App\Http\Controllers\AgregarPaqueteClienteController;
 use App\Http\Controllers\PagoController;
 use App\Http\Controllers\AccesoController;
 use App\Http\Controllers\VisitaController;
+use App\Http\Controllers\DashboardController;
 
 
 /*
@@ -52,3 +53,6 @@ Route::post('/accesos/buscar-cliente', [AccesoController::class, 'buscarClienteP
 Route::post('/accesos', [AccesoController::class, 'store'])->name('accesos.store');
 Route::post('/accesos', [AccesoController::class, 'store'])->name('accesos.store');
 Route::resource('visitas', VisitaController::class)->middleware('auth', 'role:admin');
+// Archivo: routes/web.php
+
+Route::get('/admin/index', [AdminController::class, 'dashboard'])->name('admin.index');

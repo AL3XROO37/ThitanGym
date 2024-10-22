@@ -3,7 +3,6 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: #f4f7fc;
     color: #333;
-    padding: 20px;
 }
 
 /* Título de la página */
@@ -13,6 +12,9 @@ h1 {
     margin-bottom: 20px;
 }
 
+.contenedor-crud{
+    padding: 20px;
+}
 /* Botón principal */
 a.btn-primary {
     background-color: var(--primary-color);
@@ -77,6 +79,7 @@ a.btn-warning, button.btn-danger {
     text-decoration: none;
     color: white;
     transition: background-color 0.3s ease;
+    margin: 3px;
 }
 
 a.btn-warning {

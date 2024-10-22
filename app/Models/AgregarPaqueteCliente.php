@@ -53,4 +53,6 @@ class AgregarPaqueteCliente extends Model
     {
         return $this->belongsTo(Paquete::class, 'paquete_id');
     }
+
+    
 }

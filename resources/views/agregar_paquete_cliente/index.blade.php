@@ -34,11 +34,11 @@
                     <td>{{ $paqueteCliente->fecha_fin }}</td>
                     <td>{{ $paqueteCliente->estado }}</td>
                     <td>
-                        <a href="{{ route('agregar_paquete_cliente.edit', $paqueteCliente->id) }}" class="btn btn-warning">Editar</a>
+                        <a href="{{ route('agregar_paquete_cliente.edit', $paqueteCliente->id) }}" class="btn btn-warning"><i class='bx bx-edit-alt' ></i></a>
                         <form action="{{ route('agregar_paquete_cliente.destroy', $paqueteCliente->id) }}" method="POST" style="display:inline-block;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                            <button type="submit" class="btn btn-danger"><i class='bx bx-trash'></i></button>
                         </form>
                     </td>
                 </tr>

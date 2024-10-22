@@ -20,7 +20,11 @@
     <link rel="stylesheet" href="{{ asset('css/colors.css') }}">
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
     <link rel="stylesheet" href="{{ asset('css/CRUD/clientes.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dashboardadmin.css')}}">
     <script src="{{ asset('js/header.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -35,8 +39,8 @@
 
             @auth
                 <ul class="navbar">
-                    <li><a href="{{ route('admin.index') }}" class="{{ Request::is('admin') ? 'active' : '' }}">Inicio</a>
-                    </li>
+                    <li><a href="{{ route('admin.index') }}"
+                            class="{{ Request::is('admin') ? 'active' : '' }}">Inicio</a></li>
                     <li><a href="{{ route('clientes.index') }}"
                             class="{{ Request::is('clientes') ? 'active' : '' }}">Clientes</a></li>
                     <li><a href="{{ route('paquetes.index') }}"
