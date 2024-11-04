@@ -1,8 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="contenedor">
+
     <h1>Crear Paquete</h1>
 
+    <a href="{{ route('paquetes.index') }}" class="btn btn-secondary mt-3">Volver a la lista de paquetes</a>
+ 
     <form action="{{ route('paquetes.store') }}" method="POST">
         @csrf
 
@@ -28,6 +32,6 @@
 
         <button type="submit" class="btn btn-primary">Crear Paquete</button>
     </form>
-
-    <a href="{{ route('paquetes.index') }}" class="btn btn-secondary mt-3">Volver a la lista de paquetes</a>
+       
+</div>
 @endsection

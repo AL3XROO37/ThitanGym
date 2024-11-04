@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="contenedor-crud">
     <h1>Asignaciones de Paquetes a Clientes</h1>
     <a href="{{ route('agregar_paquete_cliente.create') }}" class="btn btn-primary">Asignar Paquete</a>
 
@@ -45,4 +46,5 @@
             @endforeach
         </tbody>
     </table>
+</div>
 @endsection

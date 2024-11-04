@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="contenedor">
     <h1>Registrar Nueva Visita</h1>
 
     {{-- Mostrar errores de validación --}}

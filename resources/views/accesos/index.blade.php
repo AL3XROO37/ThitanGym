@@ -6,53 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        /* Estilos generales */
-        .access-container1 {
-            margin: 20px;
-        }
-    
-        .access-table1 {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-    
-        .access-table1 th, .access-table1 td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
-    
-        .access-table1 th {
-            background-color: #f2f2f2;
-        }
-    
-        .access-button1 {
-            padding: 10px 15px;
-            color: white;
-            background-color: #007bff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-    
-        .access-button1:hover {
-            background-color: #0056b3;
-        }
-    
-        .access-button1-danger {
-            padding: 10px 15px;
-            color: white;
-            background-color: #dc3545;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-    
-        .access-button1-danger:hover {
-            background-color: #c82333;
-        }
-    
+        
         /* Estilo del modal2 */
         .modal2 {
             display: none; /* Ocultar por defecto */
@@ -117,7 +71,7 @@
     @extends('layouts.app')
 
 @section('content')
-<div class="access-container1">
+<div class="contenedor-crud">
     <h1>Accesos</h1>
 
     {{-- Mensaje de éxito --}}
@@ -125,7 +79,7 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
-    <button class="access-button1" id="accessCreateBtn">Crear Acceso</button>
+    <a class="btn btn-primary mb-3" id="accessCreateBtn">Crear Acceso</a>
 
     <table class="access-table1">
         <thead>
@@ -148,7 +102,7 @@
                         <form action="{{ route('accesos.destroy', $acceso) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="access-button1-danger">Eliminar</button>
+                            <button type="submit" class="btn btn-danger"><i class='bx bx-trash'></i></button>
                         </form>
                     </td>
                 </tr>
@@ -161,8 +115,8 @@
         <div class="modal2-content">
             <span class="modal2-close" id="accessKeyCloseBtn">&times;</span>
             <h5>Ingrese Clave de Acceso</h5>
-            <input type="text" id="access_key_input" placeholder="Clave de Acceso">
-            <button id="accessKeySearchBtn">Buscar</button>
+            <input type="text" id="access_key_input" placeholder="Clave de Acceso" style="margin-bottom: 15px">
+            <a class="btn btn-warning" id="accessKeySearchBtn">Buscar</a>
         </div>
     </div>
 

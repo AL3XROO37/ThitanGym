@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="contenedor">
     <h1>Asignar Paquete a Cliente</h1>
 
     {{-- Mostrar mensajes de validación --}}

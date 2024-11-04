@@ -1,8 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="contenedor">
     <h1>Agregar Cliente</h1>
 
+    <a href="{{ route('clientes.index') }}" class="btn btn-secondary mt-3">Volver a la lista de clientes</a>
+   
     <form action="{{ route('clientes.store') }}" method="POST">
         @csrf
 
@@ -34,5 +37,5 @@
         <button type="submit" class="btn btn-primary">Agregar Cliente</button>
     </form>
 
-    <a href="{{ route('clientes.index') }}" class="btn btn-secondary mt-3">Volver a la lista de clientes</a>
+</div>
 @endsection

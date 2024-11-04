@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
     <link rel="stylesheet" href="{{ asset('css/CRUD/clientes.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboardadmin.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/CRUD/edit.css')}}">
     <script src="{{ asset('js/header.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 

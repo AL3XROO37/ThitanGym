@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="contenedor">
     <h2>Editar Paquete de Cliente</h2>
+    <a href="{{ route('agregar_paquete_cliente.index') }}" class="btn btn-secondary">Volver a la lista de paquetes</a>
+    
 
     @if (session('success'))
         <div class="alert alert-success">

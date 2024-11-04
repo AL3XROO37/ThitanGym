@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="contenedor">
     <h1>Editar Visita</h1>
+    <a href="{{ route('visitas.index') }}" class="btn btn-secondary">Volver a la lista de visitas</a>
+    
 
     {{-- Mostrar errores de validación --}}
     @if ($errors->any())

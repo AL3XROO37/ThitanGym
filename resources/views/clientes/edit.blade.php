@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="contenedor">
     <h1>Editar Cliente: {{ $cliente->name }}</h1>
-
+    <a href="{{ route('clientes.index') }}" class="btn btn-secondary">Volver a la lista de clientes</a>
+    
     <form action="{{ route('clientes.update', $cliente->id) }}" method="POST">
         @csrf
         @method('PUT')
@@ -34,6 +36,5 @@
 
         <button type="submit" class="btn btn-primary">Actualizar Cliente</button>
     </form>
-
-    <a href="{{ route('clientes.index') }}" class="btn btn-secondary mt-3">Volver a la lista de clientes</a>
+</div>
 @endsection
